@@ -6,17 +6,36 @@ package com.comments.domain;
 public class VoteDown {
 
     private int counter;
-    private Response response;
-    private Comment comment;
+
+    public VoteDown(Builder b)
+    {
+        this.counter = b.counter;
+    }
 
     public int getCounter()
     {
         return counter;
     }
 
-    public void decrement()
+    public void increment()
     {
-        counter--;
+        counter++;
+    }
+
+    public static class Builder
+    {
+        private int counter;
+
+        public Builder counter()
+        {
+            this.counter = 0;
+            return this;
+        }
+
+        public VoteDown build()
+        {
+            return new VoteDown(this);
+        }
     }
 
 }

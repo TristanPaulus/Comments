@@ -10,10 +10,10 @@ public class Reputation {
     private Date date;
     private int value;
 
-    public Reputation()
+    public Reputation(Builder builder)
     {
-        date = new Date();
-        value = 0;
+        this.date = builder.date;
+        this.value = builder.value;
     }
 
     public Date getDate()
@@ -24,6 +24,30 @@ public class Reputation {
     public int getValue()
     {
         return value;
+    }
+
+    public static class Builder
+    {
+        private Date date;
+        private int value;
+
+        public Builder date(Date value)
+        {
+            this.date = value;
+            return this;
+        }
+
+        public Builder value(int values)
+        {
+            this.value = values;
+            return this;
+        }
+
+        public Reputation build()
+        {
+            return new Reputation(this);
+        }
+
     }
 
 }

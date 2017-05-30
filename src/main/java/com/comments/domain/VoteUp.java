@@ -6,8 +6,11 @@ package com.comments.domain;
 public class VoteUp {
 
     private int counter;
-    private Response response;
-    private Comment comment;
+
+    public VoteUp(Builder b)
+    {
+        this.counter = b.counter;
+    }
 
     public int getCounter()
     {
@@ -17,6 +20,22 @@ public class VoteUp {
     public void increment()
     {
         counter++;
+    }
+
+    public static class Builder
+    {
+        private int counter;
+
+        public Builder counter()
+        {
+            this.counter = 0;
+            return this;
+        }
+
+        public VoteUp build()
+        {
+            return new VoteUp(this);
+        }
     }
 
 }
